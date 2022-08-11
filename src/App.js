@@ -1,8 +1,14 @@
+import Header from './components/Header'
+import TitleGenerator from './components/TitleGenerator'
+
 function App() {
   return (
-    <h1>
-      Hello World
-    </h1>
+    <>
+      <main className='container'>
+        <Header />
+        <TitleGenerator />
+      </main>
+    </>
   )
 }
 
