@@ -4,32 +4,32 @@ import {FiRefreshCcw} from 'react-icons/fi'
 import {wordList} from '../data/words.js'
 
 function TitleGenerator() {
-  const style = {
+  const iconStyle = {
     marginLeft: '1rem',
     cursor: 'pointer',
+    backgroundColor: 'transparent',
+    border: 'none',
   }
 
   const [title, setTitle] = useState(randomWord())
 
-  console.log()
-  
   return (
     <Card>
           <h2>Title:</h2>
           <div style={{marginLeft: '1rem'}}>
             {title}
-            <FiRefreshCcw onClick={() => setTitle(randomWord)} style={style} />
+            <button onClick={() => setTitle(randomWord)} style={iconStyle}>
+              <FiRefreshCcw />
+            </button>
           </div>
     </Card>
   )
 }
 
 function randomWord() {
-  // Math.random() * (max - min) + min;
-  const randomNumber = Math.floor(Math.random() * (wordList.length - 1 - 0 + 0))
+  const randomNumber = Math.floor(Math.random() * wordList.length)
   const word = wordList[randomNumber]
-  console.log(randomNumber);
-
+  
   return word.charAt(0).toUpperCase() + word.slice(1)
 }
 
