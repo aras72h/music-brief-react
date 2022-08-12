@@ -22,3 +22,16 @@ html {
   align-items: center;
   justify-content: center;
 }
+
+.btn {
+  padding: 1rem;
+  border-radius: 1rem;
+  width: 80%;
+  font-family: inherit;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: aquamarine;
+}

@@ -5,6 +5,7 @@ import ArrangementGenerator from './components/ArrangementGenerator'
 import ScaleGenerator from './components/ScaleGenerator'
 import StartPointGenerator from './components/StartPointGenerator'
 import DeadlineGenerator from './components/DeadlineGenerator'
+import PdfGenerator from './components/PdfGenerator'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <ScaleGenerator />
         <StartPointGenerator />
         <DeadlineGenerator />
+        <PdfGenerator />
       </main>
     </>
   )
