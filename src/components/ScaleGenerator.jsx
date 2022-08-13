@@ -1,4 +1,5 @@
 import Card from './shared/Card'
+import PianoKeys from './PianoKeys'
 import teoria from 'teoria'
 import { randomNumber, capitalizeFirstLetter } from '../Functions'
 
@@ -11,18 +12,30 @@ function ScaleGenerator() {
 
   const randomNote = teoria.note.fromKey(noteNumber)
   const randomScale = randomNote.scale(scales[scaleNumber])
-  const val = randomNote.name().toUpperCase() +
+  const fullScaleName =
+    randomNote.name().toUpperCase() +
     randomNote.accidental() +
     ' ' +
     capitalizeFirstLetter(randomScale.name)
 
-  console.log(val);
+  const keys = document.querySelectorAll('.key')
+
+  keys.forEach(key => {
+    console.log(key.dataset.note)
+  })
+
   return (
-    <Card>
+    <Card flexDirection='column' style={{ flexDirection: 'column' }}>
       <span className="card-title">Scale:</span>
       <span className="card-body">
-        {val}
+        {fullScaleName}
       </span>
+      <span className="card-body">
+        {randomScale.simple().join(', ')}
+      </span>
+      <div className='piano'>
+        <PianoKeys />
+      </div>
     </Card>
   )
 }
