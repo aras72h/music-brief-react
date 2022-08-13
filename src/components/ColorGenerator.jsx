@@ -1,12 +1,12 @@
 import Card from './shared/Card'
-import {colorList} from '../data/color'
+import { colorList } from '../data/color'
 
 function ColorGenerator() {
   // const [color, setColor] = useState('vintage')
   return (
     <Card>
-      <h2>Color:</h2>
-      <div style={{marginLeft: '1rem'}}>{randomColor()}</div>
+      <span className="card-title">Color:</span>
+      <span className="card-body">{randomColor()}</span>
     </Card>
   )
 }

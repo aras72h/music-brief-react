@@ -4,10 +4,10 @@ import { arrangementPatterns } from '../data/arrangement'
 function ArrangementGenerator() {
   return (
     <Card>
-      <h2>Arrangement:</h2>
-      <div style={{marginLeft: '1rem'}}>
+      <span className="card-title">Arrangement:</span>
+      <span className="card-body">
         {randomArrangement()}
-      </div>
+      </span>
     </Card>
   )
 }

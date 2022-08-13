@@ -1,8 +1,10 @@
-function Button({children}) {
+function Button({ children }) {
   return (
-    <button className="btn">
-      {children}
-    </button>
+    <div className="form-control">
+      <button className="btn">
+        {children}
+      </button>
+    </div>
   )
 }
 

@@ -4,10 +4,10 @@ import { startPointList } from '../data/startPoint'
 function StartPointGenerator() {
   return (
     <Card>
-      <h2>Start With:</h2>
-      <div style={{marginLeft: '1rem'}}>
+      <span className="card-title">Start With:</span>
+      <span className="card-body">
         {randomStartingPoint()}
-      </div>
+      </span>
     </Card>
   )
 }

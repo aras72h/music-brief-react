@@ -9,18 +9,20 @@ import PdfGenerator from './components/PdfGenerator'
 
 function App() {
   return (
-    <>
-      <main className='container'>
-        <Header />
-        <TitleGenerator />
-        <ColorGenerator />
-        <ArrangementGenerator />
-        <ScaleGenerator />
-        <StartPointGenerator />
-        <DeadlineGenerator />
+    <div className='container'>
+      <Header />
+      <div>
+        <div>
+          <TitleGenerator />
+          <ColorGenerator />
+          <ArrangementGenerator />
+          <ScaleGenerator />
+          <StartPointGenerator />
+          <DeadlineGenerator />
+        </div>
         <PdfGenerator />
-      </main>
-    </>
+      </div>
+    </div>
   )
 }
 
