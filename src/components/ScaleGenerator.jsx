@@ -7,22 +7,43 @@ function ScaleGenerator() {
   // from Middle C to Tenor C
   const noteNumber = randomNumber(40, 52)
   // all scales
-  const scales = teoria.Scale.KNOWN_SCALES
-  const scaleNumber = randomNumber(0, scales.length)
+  const allScales = teoria.Scale.KNOWN_SCALES
+  const scaleNumber = randomNumber(0, allScales.length)
 
+  // Generating a random note and scale
   const randomNote = teoria.note.fromKey(noteNumber)
-  const randomScale = randomNote.scale(scales[scaleNumber])
+  const randomScale = randomNote.scale(allScales[scaleNumber])
+
+  // Full Name of the scale
   const fullScaleName =
     randomNote.name().toUpperCase() +
     randomNote.accidental() +
     ' ' +
     capitalizeFirstLetter(randomScale.name)
 
-  const keys = document.querySelectorAll('.key')
-
-  keys.forEach(key => {
-    console.log(key.dataset.note)
+  // Painting Scale Keys in DOM
+  randomScale.scale.forEach(interval => {
+    const intervalKey = randomScale.tonic.interval(interval).key()
+    const DomPianoKeys = document.querySelectorAll('.key')
+    DomPianoKeys.forEach(key => {
+      if (Number(key.dataset.note) === intervalKey) {
+        key.style.backgroundColor = 'limegreen';
+      }
+    })
   })
+
+  // console.log(randomScale)
+  // const tonic = randomScale.tonic.key()
+  // const val = randomScale
+  //   .tonic
+  //   .interval(randomScale.scale[0]).key()
+  // console.log(tonic, val);
+
+  // const scaleLen = randomScale.scale.length
+  // console.log(scaleLen)
+
+
+
 
   return (
     <Card flexDirection='column' style={{ flexDirection: 'column' }}>
