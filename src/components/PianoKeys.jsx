@@ -1,8 +1,11 @@
-function PianoKeys() {
+function PianoKeys({ notes }) {
+  // console.log(notes);
+
+  const noteNumbers = notes.map(note => note.key())
 
 
   return (
-    <>
+    <div className='piano'>
       <div data-note="40" className="key white"></div>
       <div data-note="41" className="key black"></div>
       <div data-note="42" className="key white"></div>
@@ -27,7 +30,7 @@ function PianoKeys() {
       <div data-note="61" className="key white"></div>
       <div data-note="62" className="key black"></div>
       <div data-note="63" className="key white"></div>
-    </>
+    </div>
   )
 }
 

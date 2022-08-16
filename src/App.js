@@ -15,9 +15,7 @@ function App() {
 
   const refreshTitle = () => {
     const newTitle = titleGenerator()
-    console.log(newTitle)
     setData((prev) => {
-      console.log(prev);
       return {
         ...prev,
         title: newTitle,
@@ -32,12 +30,12 @@ function App() {
         <main>
           <div id='for-pdf'>
             <TitleGenerator title={data.title} refreshTitle={refreshTitle} />
-            <ColorGenerator />
-            <ArrangementGenerator />
-            <BpmGenerator />
-            <ScaleGenerator />
-            <StartPointGenerator />
-            <DeadlineGenerator />
+            <ColorGenerator color={data.color} />
+            <ArrangementGenerator arrangement={data.arrangement} />
+            <BpmGenerator slowTempo={data.slowTempo} fastTempo={data.fastTempo} />
+            <ScaleGenerator note={data.note} scale={data.scale} />
+            <StartPointGenerator startPoint={data.startPoint} />
+            <DeadlineGenerator deadline={data.deadline} />
           </div>
           <PdfGenerator />
         </main>

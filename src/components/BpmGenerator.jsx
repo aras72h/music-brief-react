@@ -1,11 +1,10 @@
 import Card from './shared/Card'
-import { randomNumber } from '../Functions'
 
-function BpmGenerator() {
+function BpmGenerator({ slowTempo, fastTempo }) {
   return (
     <Card>
       <span className='card-title'>BPM:</span>
-      <span className='card-body'>{randomNumber(50, 100)}</span>
+      <span className='card-body'>{slowTempo}</span>
     </Card>
   )
 }

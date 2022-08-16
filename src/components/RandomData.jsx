@@ -19,8 +19,8 @@ const color = colorList[randomNumber(0, colorList.length)]
 const arrangement = arrangementPatterns[randomNumber(0, arrangementPatterns.length)]
 
 // Random BPM
-const slowBpm = randomNumber(40, 100)
-const fastBpm = randomNumber(100, 180)
+const slowTempo = randomNumber(40, 100)
+const fastTempo = randomNumber(100, 180)
 
 // Random Note
 const note = teoria.note.fromKey(randomNumber(40, 52))
@@ -42,14 +42,14 @@ const RandomData = {
   titleGenerator,
   color,
   arrangement,
-  slowBpm,
-  fastBpm,
+  slowTempo,
+  fastTempo,
   note,
   scale,
   startPoint,
   deadline,
 }
 
-console.log(RandomData)
+// console.log(RandomData)
 
 export default RandomData
