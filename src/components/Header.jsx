@@ -1,10 +1,4 @@
 function Header() {
-  // const headerStyles = {
-  //   backgroundColor: '#999',
-  //   color: '#333',
-  //   textAlign: 'center',
-  //   padding: '1rem',
-  // }
   return (
     <header className="header">
       <div>

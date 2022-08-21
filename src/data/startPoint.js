@@ -1,8 +1,8 @@
 export const startPointList = [
-  'Drums',
-  'Recording Synth',
-  'Arp',
-  'Loop',
-  'Chords',
-  'Melody'
+  'drums',
+  'recording synth',
+  'arp',
+  'audio loop',
+  'chords',
+  'melody'
 ]

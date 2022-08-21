@@ -1,8 +1,21 @@
-html {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+:root {
+  /* TYPE */
+  --type-face: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  /* COLORS */
+  --dark-gray: #2C3333;
+  --dark-green: #395B64;
+  --green: #A5C9CA;
+  --light-green: #E7F6F2;
+}
+
+body {
+  font-family: var(--type-face);
+  background-color: var(--dark-green);
 }
 
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
   /* outline: 1px solid limegreen; */
@@ -10,14 +23,13 @@ html {
 
 .container {
   min-height: 100vh;
-  background-color: #2C3333;
 }
 
 .header {
-  text-align: center;
+  text-align: left;
   padding: 1rem;
-  background-color: #395B64;
-  color: #E7F6F2;
+  background-color: var(--dark-gray);
+  color: var(--light-green);
 }
 
 main {
@@ -26,15 +38,13 @@ main {
 }
 
 .card {
+  margin: 1rem;
+  border-radius: .5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  background-color: #A5C9CA;
-}
-
-.card:nth-child(even) {
-  background-color: #E7F6F2;
+  background-color: var(--light-green);
 }
 
 .card-title {
@@ -70,7 +80,7 @@ main {
 }
 
 .active {
-  background-color: #56c836;
+  background-color: limegreen;
 }
 
 .form-control {
@@ -86,15 +96,18 @@ main {
   border-radius: 1rem;
   width: 80%;
   margin-top: 1rem;
-  color: #fff;
   font-family: inherit;
   font-size: 1.5rem;
   cursor: pointer;
-  background-color: #395B64;
   transition: 0.3s ease;
 }
 
-.btn:hover {
+.btn-primary {
+  background-color: #395B64;
+  color: #fff;
+}
+
+.btn-primary:hover {
   background-color: #E7F6F2;
   color: #333;
 }
