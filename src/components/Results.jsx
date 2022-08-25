@@ -3,10 +3,10 @@ import TitleGenerator from './generators/TitleGenerator'
 import ScaleGenerator from './generators/ScaleGenerator'
 import TempoGenerator from './generators/TempoGenerator'
 import ColorGenerator from './generators/ColorGenerator'
-import ArrangementGenerator from './ArrangementGenerator'
+import ArrangementGenerator from './generators/ArrangementGenerator'
 import StartPointGenerator from './generators/StartPointGenerator'
 import DeadlineGenerator from './generators/DeadlineGenerator'
-import RandomData, { titleGenerator } from './RandomData'
+import RandomData, { titleGenerator, colorGenerator, arrangementGenerator, tempoGenerator, scaleGenerator, startPointGenerator, deadlineGenerator } from './RandomData'
 
 function Results() {
   const [data, setData] = useState(RandomData)
@@ -22,27 +22,67 @@ function Results() {
   }
 
   const refreshScale = () => {
-    console.log('scale refresh');
+    const { note, scale } = scaleGenerator()
+    setData((prev) => {
+      return {
+        ...prev,
+        note,
+        scale,
+      }
+    })
   }
 
   const refreshTempo = () => {
-    console.log('tempo refresh');
+    const { slowTempo, fastTempo } = tempoGenerator()
+    setData((prev) => {
+      return {
+        ...prev,
+        slowTempo,
+        fastTempo,
+      }
+    })
+
   }
 
   const refreshColor = () => {
-    console.log('color refresh')
+    const newColor = colorGenerator()
+    setData((prev) => {
+      return {
+        ...prev,
+        color: newColor,
+      }
+    })
   }
 
   const refreshArrangement = () => {
-    console.log('form refresh');
+    const newArrangement = arrangementGenerator()
+    setData((prev) => {
+      return {
+        ...prev,
+        arrangement: newArrangement,
+      }
+    })
   }
 
   const refreshStartPoint = () => {
-    console.log('starting point refresh');
+    const newStartPoint = startPointGenerator()
+    setData((prev) => {
+      return {
+        ...prev,
+        startPoint: newStartPoint,
+      }
+    })
   }
 
   const refreshDeadline = () => {
-    console.log('deadline refresh');
+    const newDeadline = deadlineGenerator()
+    // console.log(newDeadline);
+    setData((prev) => {
+      return {
+        ...prev,
+        deadline: newDeadline,
+      }
+    })
   }
 
 

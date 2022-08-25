@@ -1,4 +1,6 @@
 import Card from '.././shared/Card'
+import CardTitle from '../shared/CardTitle'
+import CardContent from '../shared/CardContent'
 import PianoKeys from '.././PianoKeys'
 import { capitalizeFirstLetter } from '../../Functions'
 import { IoIosRefresh } from 'react-icons/io'
@@ -47,18 +49,18 @@ function ScaleGenerator({ note, scale, refreshScale }) {
 
   return (
     <Card classNames={['scale']}>
-      <div className="card-title">
+      <CardTitle>
         <div>Scale</div>
         <div onClick={handleRefresh} className='refresh-icon'>
           <IoIosRefresh size={'1.44rem'} />
         </div>
-      </div>
-      <div className="card-content">
+      </CardTitle>
+      <CardContent>
         <div className='text-big'>
           {fullScaleName}
         </div>
         <PianoKeys notes={scale.notes()} />
-      </div>
+      </CardContent>
     </Card>
   )
 }

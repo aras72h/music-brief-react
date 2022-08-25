@@ -7,39 +7,71 @@ import { randomNumber } from '../Functions'
 
 // Random Title
 let title = wordList[randomNumber(0, wordList.length)]
-export const titleGenerator = () => {
+export function titleGenerator() {
   title = wordList[randomNumber(0, wordList.length)]
   return title
 }
 
 // Random Color of the sound(character)
-const color = colorList[randomNumber(0, colorList.length)]
+let color = colorList[randomNumber(0, colorList.length)]
+export function colorGenerator() {
+  color = colorList[randomNumber(0, colorList.length)]
+  return color
+}
 
 // Random Arrangement
-const arrangement = arrangementPatterns[randomNumber(0, arrangementPatterns.length)]
+let arrangement = arrangementPatterns[randomNumber(0, arrangementPatterns.length)]
+export function arrangementGenerator() {
+  arrangement = arrangementPatterns[randomNumber(0, arrangementPatterns.length)]
+  return arrangement
+}
 
 // Random BPM
-const slowTempo = randomNumber(40, 100)
-const fastTempo = randomNumber(100, 180)
+let slowTempo = randomNumber(40, 100)
+let fastTempo = randomNumber(100, 180)
+export function tempoGenerator() {
+  slowTempo = randomNumber(40, 100)
+  fastTempo = randomNumber(100, 180)
+  return {
+    slowTempo,
+    fastTempo,
+  }
+}
 
 // Random Note
-const note = teoria.note.fromKey(randomNumber(40, 52))
+let note = teoria.note.fromKey(randomNumber(40, 52))
 
 // Random Scale
 const scaleNames = teoria.Scale.KNOWN_SCALES
 
-const scale = teoria.scale(note, scaleNames[randomNumber(0, scaleNames.length)])
+let scale = teoria.scale(note, scaleNames[randomNumber(0, scaleNames.length)])
+export function scaleGenerator() {
+  note = teoria.note.fromKey(randomNumber(40, 52))
+  scale = teoria.scale(note, scaleNames[randomNumber(0, scaleNames.length)])
+  return {
+    note,
+    scale,
+  }
+}
 
 // Random Starting Points
-const startPoint = startPointList[randomNumber(0, startPointList.length)]
+let startPoint = startPointList[randomNumber(0, startPointList.length)]
+export function startPointGenerator() {
+  startPoint = startPointList[randomNumber(0, startPointList.length)]
+  return startPoint
+}
 
 // Random Deadline
 const deadline = new Date()
 deadline.setDate(new Date().getDate() + randomNumber(5, 30))
+console.log(deadline);
+export function deadlineGenerator() {
+  deadline.setDate(new Date().getDate() + randomNumber(5, 30))
+  return deadline
+}
 
 const RandomData = {
   title,
-  titleGenerator,
   color,
   arrangement,
   slowTempo,

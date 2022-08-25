@@ -1,4 +1,6 @@
-import Card from './shared/Card'
+import Card from '../shared/Card'
+import CardTitle from '../shared/CardTitle'
+import CardContent from '../shared/CardContent'
 import { IoIosRefresh } from 'react-icons/io'
 
 
@@ -9,15 +11,15 @@ function ArrangementGenerator({ arrangement, refreshArrangement }) {
 
   return (
     <Card classNames={['arrangement-section']}>
-      <div className="card-title">
+      <CardTitle>
         <div>Form</div>
         <div onClick={handleRefresh} className='refresh-icon'>
           <IoIosRefresh size={'1.44rem'} />
         </div>
-      </div>
-      <div className="card-content">
+      </CardTitle>
+      <CardContent>
         {arrangement}
-      </div>
+      </CardContent>
     </Card>
   )
 }

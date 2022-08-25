@@ -1,4 +1,6 @@
 import Card from '../shared/Card'
+import CardTitle from '../shared/CardTitle'
+import CardContent from '../shared/CardContent'
 import { IoIosRefresh } from 'react-icons/io'
 
 
@@ -15,16 +17,16 @@ function DeadlineGenerator({ deadline, refreshDeadline }) {
 
   return (
     <Card classNames={['deadline']}>
-      <div className="card-title">
+      <CardTitle>
         <div>Deadline</div>
         <div onClick={handleRefresh} className='refresh-icon'>
           <IoIosRefresh size={'1.44rem'} />
         </div>
-      </div>
-      <div className="card-content">
+      </CardTitle>
+      <CardContent>
         <div className="text-big">{deadline}</div>
         <div className="days-left">xx Days Left</div>
-      </div>
+      </CardContent>
     </Card>
   )
 }

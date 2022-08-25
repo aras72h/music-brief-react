@@ -1,4 +1,6 @@
 import Card from '../shared/Card'
+import CardTitle from '../shared/CardTitle'
+import CardContent from '../shared/CardContent'
 import { IoIosRefresh } from 'react-icons/io'
 
 
@@ -11,13 +13,13 @@ function TempoGenerator({ slowTempo, fastTempo, isFast, refreshTempo }) {
 
   return (
     <Card classNames={['tempo']}>
-      <div className="card-title">
+      <CardTitle>
         <div>Tempo</div>
         <div onClick={handleRefresh} className='refresh-icon'>
           <IoIosRefresh size={'1.44rem'} />
         </div>
-      </div>
-      <div className='card-content'>
+      </CardTitle>
+      <CardContent>
         <div className="text-big">
           {`${tempo} bpm`}
         </div>
@@ -30,8 +32,7 @@ function TempoGenerator({ slowTempo, fastTempo, isFast, refreshTempo }) {
           </label>
           <span>Fast</span>
         </div>
-
-      </div>
+      </CardContent>
     </Card>
   )
 }
