@@ -1,16 +1,9 @@
-function Card({ children, flexDirection }) {
-  const flexCol = {
-    flexDirection: flexDirection,
-  }
+function Card({ children, classNames }) {
   return (
-    <div className="card" style={flexCol}>
+    <section className={`card ${classNames.join(' ')}`}>
       {children}
-    </div>
+    </section>
   )
-}
-
-Card.defaultProps = {
-  flexDirection: 'row',
 }
 
 export default Card

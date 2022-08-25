@@ -1,8 +1,10 @@
-import Card from './shared/Card'
-import PianoKeys from './PianoKeys'
-import { capitalizeFirstLetter } from '../Functions'
+import Card from '.././shared/Card'
+import PianoKeys from '.././PianoKeys'
+import { capitalizeFirstLetter } from '../../Functions'
+import { IoIosRefresh } from 'react-icons/io'
 
-function ScaleGenerator({ note, scale }) {
+
+function ScaleGenerator({ note, scale, refreshScale }) {
   let scaleName = ''
   switch (scale.name) {
     case 'majorpentatonic':
@@ -29,7 +31,6 @@ function ScaleGenerator({ note, scale }) {
       break;
   }
 
-
   // Full Name of the scale
   const fullScaleName =
     note.name().toUpperCase() +
@@ -40,15 +41,24 @@ function ScaleGenerator({ note, scale }) {
   // console.log(scale)
   // console.log(note)
 
-
+  const handleRefresh = () => {
+    refreshScale()
+  }
 
   return (
-    <Card flexDirection='column' style={{ flexDirection: 'column' }}>
-      <span className="card-title">Scale:</span>
-      <span className="card-body">
-        {fullScaleName}
-      </span>
-      <PianoKeys notes={scale.notes()} />
+    <Card classNames={['scale']}>
+      <div className="card-title">
+        <div>Scale</div>
+        <div onClick={handleRefresh} className='refresh-icon'>
+          <IoIosRefresh size={'1.44rem'} />
+        </div>
+      </div>
+      <div className="card-content">
+        <div className='text-big'>
+          {fullScaleName}
+        </div>
+        <PianoKeys notes={scale.notes()} />
+      </div>
     </Card>
   )
 }
