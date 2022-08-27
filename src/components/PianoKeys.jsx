@@ -23,13 +23,15 @@ function PianoKeys({ notes }) {
       <div data-note="54" className={`key white ${noteNumbers.includes(54) && 'active'}`}></div>
       <div data-note="55" className={`key black ${noteNumbers.includes(55) && 'active'}`}></div>
       <div data-note="56" className={`key white ${noteNumbers.includes(56) && 'active'}`}></div>
-      <div data-note="57" className={`key white ${noteNumbers.includes(57) && 'active'}`}></div>
-      <div data-note="58" className={`key black ${noteNumbers.includes(58) && 'active'}`}></div>
+      <div data-note="57" className={`key black ${noteNumbers.includes(57) && 'active'}`}></div>
+      <div data-note="58" className={`key white ${noteNumbers.includes(58) && 'active'}`}></div>
       <div data-note="59" className={`key white ${noteNumbers.includes(59) && 'active'}`}></div>
       <div data-note="60" className={`key black ${noteNumbers.includes(60) && 'active'}`}></div>
       <div data-note="61" className={`key white ${noteNumbers.includes(61) && 'active'}`}></div>
       <div data-note="62" className={`key black ${noteNumbers.includes(62) && 'active'}`}></div>
       <div data-note="63" className={`key white ${noteNumbers.includes(63) && 'active'}`}></div>
+      <div data-note="64" className={`key black ${noteNumbers.includes(64) && 'active'}`}></div>
+      <div data-note="65" className={`key white ${noteNumbers.includes(65) && 'active'}`}></div>
     </div>
   )
 }
