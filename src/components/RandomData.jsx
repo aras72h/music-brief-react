@@ -64,10 +64,10 @@ export function startPointGenerator() {
 // Random Deadline
 const deadline = new Date()
 deadline.setDate(new Date().getDate() + randomNumber(5, 30))
-console.log(deadline);
 export function deadlineGenerator() {
-  deadline.setDate(new Date().getDate() + randomNumber(5, 30))
-  return deadline
+  const newDeadline = new Date()
+  newDeadline.setDate(new Date().getDate() + randomNumber(5, 30))
+  return newDeadline
 }
 
 const RandomData = {

@@ -1,19 +1,20 @@
-// import { IoMdRefresh } from 'react-icons/io'
-// import { FiRefreshCcw } from 'react-icons/fi'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faSolid, faRotateRight } from '@fortawesome/free-solid-svg-icons'
-
-// const refreshIcon = <FontAwesomeIcon icon={['faSolid', 'faRotateRight']} />
+import Button from "./shared/Button"
+import { IoIosRefresh } from 'react-icons/io'
 
 
 function Header() {
+  const handleRefresh = () => {
+    console.log(23);
+  }
   return (
     <header className="header">
       <h2>Music Brief</h2>
-      <button className="btn btn-secondary" type="button">
-        {/* <img className="refresh-icon" src={refreshIcon} alt="Refresh" /> */}
+      <Button onClick={handleRefresh} version='secondary'>
+        <div className="refresh-icon">
+          <IoIosRefresh size='1.44rem' />
+        </div>
         <div>New</div>
-      </button>
+      </Button>
     </header>
   )
 }

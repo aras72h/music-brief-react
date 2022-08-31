@@ -4,5 +4,6 @@ export const startPointList = [
   'arp',
   'audio loop',
   'chords',
-  'melody'
+  'melody',
+  'record presets',
 ]

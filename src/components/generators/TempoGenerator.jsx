@@ -1,15 +1,18 @@
+import { useState } from 'react'
 import Card from '../shared/Card'
 import CardTitle from '../shared/CardTitle'
 import CardContent from '../shared/CardContent'
 import { IoIosRefresh } from 'react-icons/io'
 
 
-function TempoGenerator({ slowTempo, fastTempo, isFast, refreshTempo }) {
-  let tempo = isFast ? fastTempo : slowTempo
+function TempoGenerator({ slowTempo, fastTempo, refreshTempo }) {
+  // let tempo = checked ? fastTempo : slowTempo
 
-  const handleRefresh = () => {
-    refreshTempo()
-  }
+  const [checked, setChecked] = useState(false)
+
+  const handleToggle = () => setChecked(!checked)
+
+  const handleRefresh = () => refreshTempo()
 
   return (
     <Card classNames={['tempo']}>
@@ -21,13 +24,13 @@ function TempoGenerator({ slowTempo, fastTempo, isFast, refreshTempo }) {
       </CardTitle>
       <CardContent>
         <div className="text-big">
-          {`${tempo} bpm`}
+          {`${checked ? fastTempo : slowTempo} bpm`}
         </div>
 
         <div className="tempo-switch">
           <span>Slow</span>
           <label className="switch">
-            <input type="checkbox" />
+            <input type="checkbox" checked={checked} onChange={handleToggle} />
             <span className="slider"></span>
           </label>
           <span>Fast</span>
@@ -35,10 +38,6 @@ function TempoGenerator({ slowTempo, fastTempo, isFast, refreshTempo }) {
       </CardContent>
     </Card>
   )
-}
-
-TempoGenerator.defaultProps = {
-  isFast: false,
 }
 
 export default TempoGenerator
