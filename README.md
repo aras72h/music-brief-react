@@ -6,6 +6,8 @@ This project is a **React-based music challenge generator** designed to randomly
 
 Check out the live demo here: [Music Brief React App](https://music-brief-react.vercel.app)
 
+![project-demo](https://github.com/user-attachments/assets/9bd2cc92-6614-404e-abc9-1a1281bc440e)
+
 ## Features
 
 - **Random Title Generator**: Generates random song titles.
