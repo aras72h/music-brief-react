@@ -1,6 +1,6 @@
-function Button({ children, version, type }) {
+function Button({ children, version, type, onClick, ...props }) {
   return (
-    <button type={type} className={`btn btn-${version}`}>
+    <button type={type} className={`btn btn-${version}`} onClick={onClick} {...props}>
       {children}
     </button>
   )

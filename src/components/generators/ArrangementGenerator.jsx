@@ -22,9 +22,8 @@ function ArrangementGenerator({ arrangement, refreshArrangement }) {
       </CardTitle>
       <CardContent>
         <div className="arrangement">
-          {/* BAD PRACTICE INDEX AS KEY */}
           {
-            arrangement.map((section, index) => <ArrangementBox key={index} name={section} />)
+            arrangement.map((section, index) => <ArrangementBox key={`${section}-${index}`} name={section} />)
           }
         </div>
       </CardContent>

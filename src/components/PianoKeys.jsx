@@ -1,37 +1,90 @@
-function PianoKeys({ notes }) {
-  // console.log(notes);
+const noteLabels = {
+  40: 'C4', 41: 'C#4', 42: 'D4', 43: 'D#4', 44: 'E4', 
+  45: 'F4', 46: 'F#4', 47: 'G4', 48: 'G#4', 49: 'A4', 
+  50: 'A#4', 51: 'B4', 52: 'C5', 53: 'C#5', 54: 'D5', 
+  55: 'D#5', 56: 'E5', 57: 'F5', 58: 'F#5', 59: 'G5', 
+  60: 'G#5', 61: 'A5', 62: 'A#5', 63: 'B5', 64: 'C6'
+}
 
+const pianoStructure = [
+  { white: 40, black: 41 },
+  { white: 42, black: 43 },
+  { white: 44, black: null },
+  { white: 45, black: 46 },
+  { white: 47, black: 48 },
+  { white: 49, black: 50 },
+  { white: 51, black: null },
+  { white: 52, black: 53 },
+  { white: 54, black: 55 },
+  { white: 56, black: null },
+  { white: 57, black: 58 },
+  { white: 59, black: 60 },
+  { white: 61, black: 62 },
+  { white: 63, black: null },
+  { white: 64, black: null }
+]
+
+function playNote(midiNumber) {
+  try {
+    const frequency = 440 * Math.pow(2, (midiNumber - 49) / 12)
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext
+    if (!AudioContextClass) return
+    
+    const audioCtx = new AudioContextClass()
+    const osc = audioCtx.createOscillator()
+    const gainNode = audioCtx.createGain()
+    
+    osc.type = 'triangle'
+    osc.frequency.setValueAtTime(frequency, audioCtx.currentTime)
+    
+    gainNode.gain.setValueAtTime(0.15, audioCtx.currentTime)
+    gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.8)
+    
+    osc.connect(gainNode)
+    gainNode.connect(audioCtx.destination)
+    
+    osc.start()
+    osc.stop(audioCtx.currentTime + 0.8)
+  } catch (err) {
+    console.warn('AudioContext playback blocked or failed:', err)
+  }
+}
+
+function PianoKeys({ notes }) {
   const noteNumbers = notes.map(note => note.key())
 
+  const handleKeyClick = (e, midiNumber) => {
+    e.stopPropagation() // Stop event bubbling to parent white key
+    playNote(midiNumber)
+  }
 
   return (
     <div className='piano'>
-      <div data-note="40" className={`key white ${noteNumbers.includes(40) && 'active'}`}></div>
-      <div data-note="41" className={`key black ${noteNumbers.includes(41) && 'active'}`}></div>
-      <div data-note="42" className={`key white ${noteNumbers.includes(42) && 'active'}`}></div>
-      <div data-note="43" className={`key black ${noteNumbers.includes(43) && 'active'}`}></div>
-      <div data-note="44" className={`key white ${noteNumbers.includes(44) && 'active'}`}></div>
-      <div data-note="45" className={`key white ${noteNumbers.includes(45) && 'active'}`}></div>
-      <div data-note="46" className={`key black ${noteNumbers.includes(46) && 'active'}`}></div>
-      <div data-note="47" className={`key white ${noteNumbers.includes(47) && 'active'}`}></div>
-      <div data-note="48" className={`key black ${noteNumbers.includes(48) && 'active'}`}></div>
-      <div data-note="49" className={`key white ${noteNumbers.includes(49) && 'active'}`}></div>
-      <div data-note="50" className={`key black ${noteNumbers.includes(50) && 'active'}`}></div>
-      <div data-note="51" className={`key white ${noteNumbers.includes(51) && 'active'}`}></div>
-      <div data-note="52" className={`key black ${noteNumbers.includes(52) && 'active'}`}></div>
-      <div data-note="53" className={`key white ${noteNumbers.includes(53) && 'active'}`}></div>
-      <div data-note="54" className={`key white ${noteNumbers.includes(54) && 'active'}`}></div>
-      <div data-note="55" className={`key black ${noteNumbers.includes(55) && 'active'}`}></div>
-      <div data-note="56" className={`key white ${noteNumbers.includes(56) && 'active'}`}></div>
-      <div data-note="57" className={`key black ${noteNumbers.includes(57) && 'active'}`}></div>
-      <div data-note="58" className={`key white ${noteNumbers.includes(58) && 'active'}`}></div>
-      <div data-note="59" className={`key white ${noteNumbers.includes(59) && 'active'}`}></div>
-      <div data-note="60" className={`key black ${noteNumbers.includes(60) && 'active'}`}></div>
-      <div data-note="61" className={`key white ${noteNumbers.includes(61) && 'active'}`}></div>
-      <div data-note="62" className={`key black ${noteNumbers.includes(62) && 'active'}`}></div>
-      <div data-note="63" className={`key white ${noteNumbers.includes(63) && 'active'}`}></div>
-      <div data-note="64" className={`key black ${noteNumbers.includes(64) && 'active'}`}></div>
-      <div data-note="65" className={`key white ${noteNumbers.includes(65) && 'active'}`}></div>
+      {pianoStructure.map(({ white, black }) => {
+        const isWhiteActive = noteNumbers.includes(white)
+        const isBlackActive = black && noteNumbers.includes(black)
+        
+        return (
+          <div 
+            key={white}
+            className={`key white ${isWhiteActive ? 'active' : ''}`}
+            onClick={(e) => handleKeyClick(e, white)}
+            title={noteLabels[white]}
+          >
+            {isWhiteActive && <span className="note-label">{noteLabels[white]}</span>}
+            
+            {black && (
+              <div 
+                className={`key black ${isBlackActive ? 'active' : ''}`}
+                onClick={(e) => handleKeyClick(e, black)}
+                title={noteLabels[black]}
+              >
+                {isBlackActive && <span className="note-label">{noteLabels[black]}</span>}
+              </div>
+            )}
+          </div>
+        )
+      })}
     </div>
   )
 }

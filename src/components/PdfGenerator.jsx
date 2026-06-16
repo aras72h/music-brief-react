@@ -8,13 +8,9 @@ function generatePdf() {
 
 function PdfGenerator() {
   return (
-    <>
-      <Button>
-        <div onClick={generatePdf}>
-          Download PDF
-        </div>
-      </Button>
-    </>
+    <Button onClick={generatePdf}>
+      Download PDF
+    </Button>
   )
 }
 
