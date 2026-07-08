@@ -24,39 +24,8 @@ const pianoStructure = [
   { white: 64, black: null }
 ]
 
-function playNote(midiNumber) {
-  try {
-    const frequency = 440 * Math.pow(2, (midiNumber - 49) / 12)
-    const AudioContextClass = window.AudioContext || window.webkitAudioContext
-    if (!AudioContextClass) return
-    
-    const audioCtx = new AudioContextClass()
-    const osc = audioCtx.createOscillator()
-    const gainNode = audioCtx.createGain()
-    
-    osc.type = 'triangle'
-    osc.frequency.setValueAtTime(frequency, audioCtx.currentTime)
-    
-    gainNode.gain.setValueAtTime(0.15, audioCtx.currentTime)
-    gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.8)
-    
-    osc.connect(gainNode)
-    gainNode.connect(audioCtx.destination)
-    
-    osc.start()
-    osc.stop(audioCtx.currentTime + 0.8)
-  } catch (err) {
-    console.warn('AudioContext playback blocked or failed:', err)
-  }
-}
-
 function PianoKeys({ notes }) {
   const noteNumbers = notes.map(note => note.key())
-
-  const handleKeyClick = (e, midiNumber) => {
-    e.stopPropagation() // Stop event bubbling to parent white key
-    playNote(midiNumber)
-  }
 
   return (
     <div className='piano'>
@@ -68,7 +37,6 @@ function PianoKeys({ notes }) {
           <div 
             key={white}
             className={`key white ${isWhiteActive ? 'active' : ''}`}
-            onClick={(e) => handleKeyClick(e, white)}
             title={noteLabels[white]}
           >
             {isWhiteActive && <span className="note-label">{noteLabels[white]}</span>}
@@ -76,7 +44,6 @@ function PianoKeys({ notes }) {
             {black && (
               <div 
                 className={`key black ${isBlackActive ? 'active' : ''}`}
-                onClick={(e) => handleKeyClick(e, black)}
                 title={noteLabels[black]}
               >
                 {isBlackActive && <span className="note-label">{noteLabels[black]}</span>}

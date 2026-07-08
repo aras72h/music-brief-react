@@ -314,7 +314,7 @@ input:checked + .slider:before {
 }
 
 .key {
-  cursor: pointer;
+  cursor: default;
   transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
   display: flex;
   align-items: flex-end;
@@ -361,14 +361,6 @@ input:checked + .slider:before {
   border-radius: 0 0 0.2rem 0.2rem;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
   border: 1px solid #000000;
-}
-
-.white:active {
-  transform: scaleY(0.98);
-}
-
-.black:active {
-  transform: translateX(50%) scaleY(0.96);
 }
 
 .white.active {
